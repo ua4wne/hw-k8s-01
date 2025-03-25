@@ -8,7 +8,7 @@
 
 
     Личный компьютер с ОС Linux или MacOS
-    
+
 или
     
     ВМ c ОС Linux в облаке либо ВМ на локальной машине для установки MicroK8S
@@ -24,4 +24,18 @@
 ## Задание 2. Установка и настройка локального kubectl
 
 Установить на локальную машину kubectl.
+
+![install](./task2/install.png)
+![version](./task2/version.png)
+
+Настроить локально подключение к кластеру.
+
+![local](./task2/local.png)
+
+Подключиться к дашборду с помощью port-forward.
+
+![proxy](./task2/proxy.png)
+![dash](./task2/dash.png)
+
+
 

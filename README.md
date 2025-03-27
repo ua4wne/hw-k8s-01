@@ -1,41 +1,42 @@
-# Домашнее задание к занятию «Kubernetes. Причины появления. Команда kubectl»
+# Домашнее задание к занятию «Базовые объекты K8S»
 
 ## Цель задания
 
-Для экспериментов и валидации ваших решений вам нужно подготовить тестовую среду для работы с Kubernetes. Оптимальное решение — развернуть на рабочей машине или на отдельной виртуальной машине MicroK8S.
+В тестовой среде для работы с Kubernetes, установленной в предыдущем ДЗ, необходимо развернуть Pod с приложением и подключиться к нему со своего локального компьютера.
 
 ## Чеклист готовности к домашнему заданию
 
 
-    Личный компьютер с ОС Linux или MacOS
-
-или
-    
-    ВМ c ОС Linux в облаке либо ВМ на локальной машине для установки MicroK8S
-
-## Задание 1. Установка MicroK8S
-
-Установить MicroK8S на локальную машину или на удалённую виртуальную машину.
-
-![install](./task1/install.png)
-![status](./task1/status.png)
-![cert](./task1/cert.png)
-
-## Задание 2. Установка и настройка локального kubectl
-
-Установить на локальную машину kubectl.
-
-![install](./task2/install.png)
-![version](./task2/version.png)
-
-Настроить локально подключение к кластеру.
-
-![local](./task2/local.png)
-
-Подключиться к дашборду с помощью port-forward.
-
-![proxy](./task2/proxy.png)
-![dash](./task2/dash.png)
+    Установленное k8s-решение (например, MicroK8S).
+    Установленный локальный kubectl.
+    Редактор YAML-файлов с подключенным Git-репозиторием.
 
 
+## Задание 1. Создать Pod с именем hello-world
 
+1. Создать манифест (yaml-конфигурацию) Pod.
+2. Использовать image - gcr.io/kubernetes-e2e-test-images/echoserver:2.2
+
+>Ответ: [pod.yaml](./pod.yaml)
+
+3. Подключиться локально к Pod с помощью kubectl port-forward и вывести значение (curl или в браузере).
+
+![pod](./task1/pod.png)
+![curl](./task1/curl.png)
+![port-forward](./task1/port-forward.png)
+
+## Задание 2. Создать Service и подключить его к Pod
+
+1. Создать Pod с именем netology-web.
+2. Использовать image — gcr.io/kubernetes-e2e-test-images/echoserver:2.2.
+
+>Ответ: [pod-web.yaml](./pod-web.yaml)
+
+3. Создать Service с именем netology-svc и подключить к netology-web.
+
+>Ответ: [service.yaml](./service.yaml)
+
+4. Подключиться локально к Service с помощью kubectl port-forward и вывести значение (curl или в браузере).
+
+![pod2](./task2/pod2.png)
+![curl](./task2/curl.png)

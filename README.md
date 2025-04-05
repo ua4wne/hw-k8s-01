@@ -35,6 +35,7 @@
 Создать отдельный Pod с приложением multitool и убедиться с помощью curl, что из пода есть доступ до приложений из п.1.
 
 ![onepod](./task1/onepod.png)
+![pods](./task1/pods.png)
 ![curl](./task1/curl.png)
 
 

@@ -28,22 +28,15 @@
 
 Создать Service, который обеспечит доступ до реплик приложений из п.1.
 
+>Ответ: [service.yml](./service.yml)
 
-## Задание 2. Установка и настройка локального kubectl
+![service](./task1/service.png)
 
-Установить на локальную машину kubectl.
+Создать отдельный Pod с приложением multitool и убедиться с помощью curl, что из пода есть доступ до приложений из п.1.
 
-![install](./task2/install.png)
-![version](./task2/version.png)
-
-Настроить локально подключение к кластеру.
-
-![local](./task2/local.png)
-
-Подключиться к дашборду с помощью port-forward.
-
-![proxy](./task2/proxy.png)
-![dash](./task2/dash.png)
+![onepod](./task1/onepod.png)
+![curl](./task1/curl.png)
 
 
+## Задание 2. Создать Deployment и обеспечить старт основного контейнера при выполнении условий
 

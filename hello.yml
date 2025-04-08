@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-hello
+spec:
+  selector:
+    matchLabels:
+      app: hello
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: hello
+    spec:
+      initContainers:
+      - name: init-backend
+        image: alpine
+        command: ['sh', '-c', 'echo frontend > /usr/share/nginx/html/index.html']
+        volumeMounts:
+          - name: data
+            mountPath: /usr/share/nginx/html
+
+      containers:
+      - name: nginx
+        image: nginx:1.25.4
+        volumeMounts:
+          - name: data
+            mountPath: /usr/share/nginx/html
+        ports:
+        - containerPort: 80
+      volumes:
+        - name: data
+          emptyDir: {}

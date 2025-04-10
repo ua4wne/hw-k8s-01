@@ -30,4 +30,5 @@ spec:
         - containerPort: 80
       volumes:
         - name: data
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName: task-pv-claim

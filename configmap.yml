@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: default
+data:
+  HTTP_PORT: '81'
+  index.html: |
+    <html>
+    <h1>Welcome netology</h1>
+    </br>
+    <h1>Hello World!</h1>
+    </html>

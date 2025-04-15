@@ -1,51 +1,38 @@
-# Домашнее задание к занятию «Конфигурация приложений»
+# Домашнее задание к занятию «Управление доступом»
 
 ## Цель задания
 
-В тестовой среде Kubernetes необходимо создать конфигурацию и продемонстрировать работу приложения.
+В тестовой среде Kubernetes нужно предоставить ограниченный доступ пользователю.
 
 ## Чеклист готовности к домашнему заданию
-
 
     Установленное k8s-решение (например, MicroK8S).
     Установленный локальный kubectl.
     Редактор YAML-файлов с подключённым Git-репозиторием.
 
 
-## Задание 1. Создать Deployment приложения и решить возникшую проблему с помощью ConfigMap. Добавить веб-страницу
+## Задание 1. Создайте конфигурацию для подключения пользователя
 
-Создать Deployment приложения, состоящего из контейнеров nginx и multitool.
-Решить возникшую проблему с помощью ConfigMap.
-Продемонстрировать, что pod стартовал и оба конейнера работают.
+1. Создайте и подпишите SSL-сертификат для подключения к кластеру.
 
-![deploy](./task1/deploy.png)
+![new_cert](./task1/new_cert.png)
 
-Сделать простую веб-страницу и подключить её к Nginx с помощью ConfigMap. Подключить Service и показать вывод curl или в браузере.
+2. Настройте конфигурационный файл kubectl для подключения.
 
-![service](./task1/service.png)
+![context](./task1/context.png)
+![rbac](./task1/rbac.png)
 
-Предоставить манифесты, а также скриншоты или вывод необходимых команд.
+3. Создайте роли и все необходимые настройки для пользователя.
 
->Ответ: [deploy.yml](./deploy.yml) [configmap.yml](./configmap.yml) [service.yml](./service.yml)
+![role](./task1/role.png)
 
+4. Предусмотрите права пользователя. Пользователь может просматривать логи подов и их конфигурацию (kubectl logs pod <pod_id>, kubectl describe pod <pod_id>).
 
-## Задание 2. Создать приложение с вашей веб-страницей, доступной по HTTPS
-
-Создать Deployment приложения, состоящего из Nginx.
-Создать собственную веб-страницу и подключить её как ConfigMap к приложению.
-
-![deploy](./task2/deploy.png)
-
-Выпустить самоподписной сертификат SSL. Создать Secret для использования сертификата.
-
->openssl req -x509 -newkey rsa:4096 -sha256 -nodes -keyout tls.key -out tls.crt -subj "/CN=myapp.com" -days 365
-
-![cert](./task2/cert.png)
-
-Создать Ingress и необходимый Service, подключить к нему SSL в вид. Продемонстировать доступ к приложению по HTTPS.
-
-![curl](./task2/curl.png)
+![pod](./task1/pod.png)
+![log](./task1/log.png)
+![describe](./task1/describe.png)
+![delete](./task1/delete.png)
 
 Предоставить манифесты, а также скриншоты или вывод необходимых команд.
 
->Ответ: [nginx-deploy.yml](./nginx-deploy.yml) [confmap-nginx.yml](./confmap-nginx.yml) [secret.yml](./secret.yml) [ingress.yml](./ingress.yml) [tls-service.yml](./tls-service.yml)
+>Ответ: [deploy.yml](./deploy.yml) [set-role.yml](./set-role.yml) [role-binding.yml](./role-binding.yml)

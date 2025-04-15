@@ -1,36 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-app
+  labels:
+    app: nginx-frontend
+  name: nginx-only
+  namespace: dervish
 spec:
-  replicas: 1
   selector:
     matchLabels:
-      app: nginx
+      app: my-front
+  replicas: 1
   template:
     metadata:
       labels:
-        app: nginx
+        app: my-front
     spec:
       containers:
-      - name: nginx
-        image: nginx:1.27
-        ports:
-        - containerPort: 80
-        volumeMounts:
-            - name: nginx-www
-              mountPath: /usr/share/nginx/html/ # в поде
-      - name: multitool
-        image: wbitt/network-multitool
-        ports:
-        - containerPort: 8080
-        env:
-          - name: HTTP_PORT
-            valueFrom:
-              configMapKeyRef:
-                name: default
-                key: HTTP_PORT
-      volumes:
-      - name: nginx-www
-        configMap:
-          name: default
+        - name: nginx-app
+          image: nginx:1.27

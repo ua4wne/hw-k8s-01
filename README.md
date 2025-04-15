@@ -33,6 +33,6 @@
 ![describe](./task1/describe.png)
 ![deny](./task1/deny.png)
 
-Предоставить манифесты, а также скриншоты или вывод необходимых команд.
+5. Предоставьте манифесты и скриншоты и/или вывод необходимых команд.
 
 >Ответ: [deploy.yml](./deploy.yml) [set-role.yml](./set-role.yml) [role-binding.yml](./role-binding.yml)

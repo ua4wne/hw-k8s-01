@@ -31,7 +31,7 @@
 ![pod](./task1/pod.png)
 ![log](./task1/log.png)
 ![describe](./task1/describe.png)
-![delete](./task1/delete.png)
+![deny](./task1/deny.png)
 
 Предоставить манифесты, а также скриншоты или вывод необходимых команд.
 

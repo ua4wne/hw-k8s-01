@@ -1,38 +1,34 @@
-# Домашнее задание к занятию «Управление доступом»
+# Домашнее задание к занятию «Helm»
 
 ## Цель задания
 
-В тестовой среде Kubernetes нужно предоставить ограниченный доступ пользователю.
+В тестовой среде Kubernetes необходимо установить и обновить приложения с помощью Helm.
 
 ## Чеклист готовности к домашнему заданию
 
     Установленное k8s-решение (например, MicroK8S).
     Установленный локальный kubectl.
+    Установленный локальный Helm.
     Редактор YAML-файлов с подключённым Git-репозиторием.
 
 
-## Задание 1. Создайте конфигурацию для подключения пользователя
+## Задание 1. Подготовить Helm-чарт для приложения
 
-1. Создайте и подпишите SSL-сертификат для подключения к кластеру.
+1. Необходимо упаковать приложение в чарт для деплоя в разные окружения.
+2. Каждый компонент приложения деплоится отдельным deployment’ом или statefulset’ом.
+3. В переменных чарта измените образ приложения для изменения версии.
 
-![new_cert](./task1/new_cert.png)
+>helm create hello-kubernetes - создаем helm_chart 
+>[values.yaml](./hello-kubernetes-dev/values.yaml) [Chart.yaml](./hello-kubernetes-dev/Chart.yaml) [_helpers.tpl](./hello-kubernetes-dev/templates/_helpers.tpl)
+>[deployment.yaml](./hello-kubernetes-dev/templates/deployment.yaml) [service.yaml](./hello-kubernetes-dev/templates/service.yaml) [serviceaccount.yaml](./hello-kubernetes-dev/templates/serviceaccount.yaml)
 
-2. Настройте конфигурационный файл kubectl для подключения.
 
-![context](./task1/context.png)
-![rbac](./task1/rbac.png)
+## Задание 2. Запустить две версии в разных неймспейсах
 
-3. Создайте роли и все необходимые настройки для пользователя.
+1. Подготовив чарт, необходимо его проверить. Запуститe несколько копий приложения.
+2. Одну версию в namespace=app1, вторую версию в том же неймспейсе, третью версию в namespace=app2.
+3. Продемонстрируйте результат.
 
-![role](./task1/role.png)
-
-4. Предусмотрите права пользователя. Пользователь может просматривать логи подов и их конфигурацию (kubectl logs pod <pod_id>, kubectl describe pod <pod_id>).
-
-![pod](./task1/pod.png)
-![log](./task1/log.png)
-![describe](./task1/describe.png)
-![deny](./task1/deny.png)
-
-5. Предоставьте манифесты и скриншоты и/или вывод необходимых команд.
-
->Ответ: [deploy.yml](./deploy.yml) [set-role.yml](./set-role.yml) [role-binding.yml](./role-binding.yml)
+![namespace](./task1/namespace.png)
+![deploy](./task1/deploy.png)
+![check](./task1/check.png)

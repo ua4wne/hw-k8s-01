@@ -18,9 +18,12 @@
 2. Каждый компонент приложения деплоится отдельным deployment’ом или statefulset’ом.
 3. В переменных чарта измените образ приложения для изменения версии.
 
->helm create hello-kubernetes - создаем helm_chart 
+>helm create hello-kubernetes-dev - создаем helm_chart
+
 >[values.yaml](./hello-kubernetes-dev/values.yaml) [Chart.yaml](./hello-kubernetes-dev/Chart.yaml) [_helpers.tpl](./hello-kubernetes-dev/templates/_helpers.tpl)
 >[deployment.yaml](./hello-kubernetes-dev/templates/deployment.yaml) [service.yaml](./hello-kubernetes-dev/templates/service.yaml) [serviceaccount.yaml](./hello-kubernetes-dev/templates/serviceaccount.yaml)
+
+>то же самое делаем еще для двух чартов: hello-kubernetes-prod и hello-kubernetes-stage, различие чартов в версиях ПО
 
 
 ## Задание 2. Запустить две версии в разных неймспейсах

@@ -34,4 +34,3 @@
 
 ![namespace](./task1/namespace.png)
 ![deploy](./task1/deploy.png)
-![check](./task1/check.png)
